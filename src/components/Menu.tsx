@@ -9,7 +9,7 @@ type MenuItemProps = {
 function MenuItem ({title, url, isSelected}: MenuItemProps) {
     return (
         <li>
-            <a className={`text-2xl font-bold ${isSelected ? "text-custom-light-red" : ""} `} href={url}>{title}</a>
+            <a className={`text-2xl font-medium ${isSelected ? "text-custom-light-red" : ""} `} href={url}>{title}</a>
         </li>
     )
 }
@@ -22,6 +22,7 @@ export function Menu () {
                 <ul className="flex gap-12">
                     <MenuItem title={"Quem somos"} url={"#quemsomos"} isSelected={true} />
                     <MenuItem title={"Como adotar"} url={"#comoadotar"} isSelected={false} />
+                    <MenuItem title={"Objetivos"} url={"#objetivos"} isSelected={false} />
                     <MenuItem title={"Cães"} url={"#caes"} isSelected={false} />
                     <MenuItem title={"Contato"} url={"#contato"} isSelected={false} />
                 </ul>

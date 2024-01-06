@@ -21,7 +21,7 @@ export function WhoWeAre() {
                 <Container>
                 <div className="h-screen flex flex-col justify-center items-end">
                     <div className="w-3/5 ">
-                        <Title text="Quem somos?" />
+                        <Title text="Quem somos?" color="text-white"/>
                         <p className="text-center text-white text-2xl font-light mt-10">
                             Somos o Programa de Extensão "Adotar é LegAU", uma iniciativa conjunta da Prefeitura de Alfenas em parceria com a
                             Universidade Federal de Alfenas (Unifal). Nossa missão é promover uma abordagem humanizada em relação aos animais

@@ -12,6 +12,9 @@ const config: Config = {
         'bg-whoweare': "url('../assets/bg-whoweare.svg')",
         'bg-info': "url('../assets/bg-info.svg')",
         'bg-social': "url('../assets/bg-social.svg')",
+        'yellow-blob': "url('../assets/blob1.svg')",
+        'blue-blob': "url('../assets/blob3.svg')",
+        'red-blob': "url('../assets/blob2.svg')",
       },
       colors: {
         'custom-yellow': '#F8D432',
