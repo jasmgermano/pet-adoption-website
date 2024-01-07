@@ -14,7 +14,7 @@ type InfoItemProps = {
     showButton?: boolean;
 }
 
-function InfoItem({textBtn, urlBtn, colorBtn, text, title, showButton} : InfoItemProps) {
+function InfoItem({ textBtn, urlBtn, colorBtn, text, title, showButton }: InfoItemProps) {
     return (
         <div className="text-white flex flex-col items-center gap-7">
             <Title text={title} color="text-white" />
@@ -22,16 +22,18 @@ function InfoItem({textBtn, urlBtn, colorBtn, text, title, showButton} : InfoIte
             <a href={urlBtn}><button className={`${colorBtn} text-white rounded-full uppercase font-bold h-20 w-56 text-2xl leading-7 px-8`}>
                 {textBtn}
             </button></a>
-            {showButton && 
-                <button>
-                    <a href="#">
-                        <div className="flex items-center mt-10">
+            <a href="#">
+                <button className="h-16">
+
+                    {showButton &&
+                        <div className="flex items-center mt-9">
                             <span className="uppercase text-xl font-semibold text-right text-custom-yellow leading-6">Conheça nossos aumigos</span>
                             <Image src={Arrow} alt="Seta" className="h-16" />
-                        </div>                        
-                    </a>                   
+                        </div>
+                    }
+
                 </button>
-            }               
+            </a>
         </div>
     )
 }
@@ -65,7 +67,6 @@ export function Info() {
                     </div>
                 </Container>
             </div>
-
         </div>
     )
 }
