@@ -6,9 +6,9 @@ import { Container } from "./Container"
 
 export function Contact() {
     return (
-        <div className="w-screen flex justify-center my-20">
+        <div className="flex justify-center my-20 lg:my-0 lg:mb-10">
             <Container>
-                <div className="">
+                <div className="lg:flex lg:items-center lg:gap-10">
                     <div>
                         <h1 className="font-semibold text-4xl text-center text-custom-blue uppercase leading-8 mb-2">Fale com <span className="block">a gente!</span></h1>
                         <div className="flex justify-center gap-2">

@@ -6,7 +6,7 @@ type ContainerProps = {
 
 export function Container ({children}: ContainerProps) {
     return (
-        <div className="h-full flex items-center justify-between px-5">
+        <div className="h-full flex items-center justify-between px-5 md:px-10 lg:px-24">
             {children}                    
         </div>
     )
