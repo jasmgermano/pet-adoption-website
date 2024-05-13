@@ -2,6 +2,7 @@ import Image from "next/image"
 import IgIcon from "@/assets/ig.svg"
 import TiktokIcon from "@/assets/tiktok.svg"
 import WppIcon from "@/assets/whatsapp.svg"
+import Prosan from "@/assets/prosan-logo.svg"
 import { Container } from "./Container"
 
 export function Contact() {
@@ -15,6 +16,9 @@ export function Contact() {
                             <Image src={IgIcon} alt="Instagram" height={25} />
                             <Image src={TiktokIcon} alt="Tiktok" height={25} />
                             <Image src={WppIcon} alt="Whatsapp" height={25} />
+                        </div>
+                        <div className="flex justify-center mt-5">
+                            <Image src={Prosan} alt="Prosan" height={50} />
                         </div>
                     </div>
                     <form action="" className="flex flex-col items-center mt-5">
