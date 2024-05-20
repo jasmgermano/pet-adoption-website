@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/modal": "^2.0.33",
+    "@nextui-org/system": "^2.1.2",
+    "@nextui-org/theme": "^2.2.3",
+    "axios": "^1.7.1",
+    "framer-motion": "^11.1.9",
     "instagram-web-api": "^2.2.2",
     "next": "14.0.4",
     "react": "^18",
