@@ -3,7 +3,7 @@ import { Container } from "./Container"
 import DogHeader from "@/assets/registerPage-header.png"
 
 
-export function RegisterHeader() {
+export function AdmHeader() {
     const user = {
         name: "Jasjas",
         photoUrl: "",

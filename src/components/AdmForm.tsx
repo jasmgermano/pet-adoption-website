@@ -16,7 +16,7 @@ type BreedOption = {
     name: string;
 };
 
-export default function RegisterForm() {
+export default function AdmForm() {
     const [breeds, setBreeds] = useState<BreedOption[]>([]);
     const [selectedBreed, setSelectedBreed] = useState("");
 
@@ -49,12 +49,12 @@ export default function RegisterForm() {
     }
 
     return (
-        <div className="w-screen pt-24 mb-24">
+        <div className="pt-24 mb-24">
             <Container> 
                 <div className="w-full flex flex-col items-center">
                     <h1 className="text-4xl font-bold text-center">Cadastro de Animais</h1>
-                    <form className="flex flex-col mt-4 w-1/2">
-                        <div className="flex gap-7">
+                    <form className="flex flex-col mt-4">
+                        <div className="flex gap-4">
                             <input type="text" placeholder="Nome" className="h-12 w-2/3 border-2 border-gray-300 rounded-md p-2" />
                             <input type="number" placeholder="Idade" className="h-12 w-1/3 border-2 border-gray-300 rounded-md p-2" />
                         </div>
