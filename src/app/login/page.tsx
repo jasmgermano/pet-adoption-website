@@ -2,6 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 type LoginData = {
   email: string;
@@ -9,6 +10,8 @@ type LoginData = {
 };
 
 export default function Login() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -30,8 +33,7 @@ export default function Login() {
         message: "E-mail ou senha incorretos",
       });
     } else if (result?.ok) {
-      console.log("Successfully signed in:", result);
-      // Redirecionar ou fazer algo após o login bem-sucedido
+      router.push("/admin");
     } else {
       setError("email", {
         type: "manual",

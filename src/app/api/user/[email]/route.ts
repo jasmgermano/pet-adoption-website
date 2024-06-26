@@ -6,6 +6,7 @@ export async function GET(
 ) {
   await sql`CREATE TABLE IF NOT EXISTS users (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    name varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     password varchar(255) NOT NULL,
     created_at timestamp DEFAULT CURRENT_TIMESTAMP
@@ -13,15 +14,9 @@ export async function GET(
 
   const email = params.email.trim();
 
-  // Verificando se o email está sendo passado corretamente
-  console.log("Email parameter:", email);
-
-  // Usando o método .raw para passar o parâmetro diretamente na consulta
-  const { rows } = await sql.raw(`SELECT * FROM users WHERE email = $1`, [
-    email,
-  ]);
-
-  console.log("rows", rows);
+  const { rows } = await sql`
+    SELECT id, email FROM users WHERE email = ${email}
+  `;
 
   if (rows.length === 0) {
     return new Response(
