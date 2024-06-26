@@ -1,6 +1,11 @@
 import { sql } from "@vercel/postgres";
+import { NextRequest } from "next/server";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const type = req.nextUrl.searchParams.get("type");
+  const age = req.nextUrl.searchParams.get("age");
+  const weight = req.nextUrl.searchParams.get("weight");
+
   await sql`CREATE TABLE IF NOT EXISTS pets (
         id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
         name varchar(255) NOT NULL,
@@ -13,7 +18,19 @@ export async function GET() {
         created_at timestamp DEFAULT CURRENT_TIMESTAMP
         )`;
 
-  const { rows } = await sql`SELECT * FROM pets`;
+  let query = sql`SELECT * FROM pets WHERE 1=1`; // Base query
+
+  if (type) {
+    query = sql`${String(query)} AND type = ${type}`;
+  }
+  if (age) {
+    query = sql`${String(query)} AND age = ${age}`;
+  }
+  if (weight) {
+    query = sql`${String(query)} AND weight = ${weight}`;
+  }
+
+  const { rows } = await query;
 
   return new Response(
     JSON.stringify({

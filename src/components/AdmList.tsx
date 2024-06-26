@@ -179,6 +179,7 @@ export default function AdmList() {
                                 src={pet.image}
                                 alt="dog"
                                 className="w-full h-full rounded-full"
+                                objectFit="cover"
                                 width={40}
                                 height={40}
                               />
