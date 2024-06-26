@@ -2,6 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 type LoginData = {
   email: string;
@@ -9,11 +10,13 @@ type LoginData = {
 };
 
 export default function Login() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
     setError,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginData>();
 
   const onSubmit: SubmitHandler<LoginData> = async (data) => {
@@ -30,8 +33,7 @@ export default function Login() {
         message: "E-mail ou senha incorretos",
       });
     } else if (result?.ok) {
-      console.log("Successfully signed in:", result);
-      // Redirecionar ou fazer algo após o login bem-sucedido
+      router.push("/admin");
     } else {
       setError("email", {
         type: "manual",
@@ -129,8 +131,30 @@ export default function Login() {
           )}
           <button
             type="submit"
-            className="bg-custom-cyan text-white w-3/4 py-2 mt-5 rounded-full"
+            className="flex items-center justify-center gap-2 bg-custom-cyan text-white w-3/4 py-2 mt-5 rounded-full"
+            disabled={isSubmitting}
           >
+            {isSubmitting && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"
+                >
+                  <animateTransform
+                    attributeName="transform"
+                    dur="0.75s"
+                    repeatCount="indefinite"
+                    type="rotate"
+                    values="0 12 12;360 12 12"
+                  />
+                </path>
+              </svg>
+            )}
             Entrar
           </button>
           <a href="/" className="text-custom-cyan mt-5">

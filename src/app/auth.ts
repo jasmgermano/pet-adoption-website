@@ -10,24 +10,22 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
-        const fakePromise = new Promise((resolve, reject) => {
-          setTimeout(() => {
-            if (
-              credentials.email === "johndoe@gmail.com" &&
-              credentials.password === "password123"
-            ) {
-              resolve({
-                id: 1,
-                name: "John Doe",
-                email: "johndoe@gmail.com",
-              });
-            } else {
-              resolve(null);
-            }
-          }, 1000);
-        });
+        const { email, password } = credentials;
 
-        const user = await fakePromise;
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/user/auth`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+          }
+        );
+
+        const data = await response.json();
+
+        const user = data.body;
+
+        console.log("user login", data);
 
         if (user) {
           return user;
@@ -40,9 +38,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        console.log("user callback", user);
+
         token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
       }
       return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id as string;
+        session.user.email = token.email as string;
+      }
+      return session;
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
