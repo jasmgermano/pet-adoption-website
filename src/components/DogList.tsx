@@ -32,7 +32,7 @@ export function DogList() {
     async function fetchPets() {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/pet?type=${type}&age=${age}&weight=${weight}`
+          `/api/pet?type=${type}&age=${age}&weight=${weight}`
         );
         const data = await response.json();
         setPets(data.body);
