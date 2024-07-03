@@ -37,7 +37,7 @@ export function Info() {
                 <div className="flex flex-col items-center lg:hidden">
                     <InfoItem
                         textBtn="Quero apadrinhar!"
-                        urlBtn="#"
+                        urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+adotar+um+aumigo%21"
                         colorBtn="bg-custom-cyan"
                         text="Apadrinhar um animal envolve contribuições financeiras para cuidados essenciais ou doar tempo e afeto por meio de visitas."
                         title="Apadrinhar"
@@ -45,7 +45,7 @@ export function Info() {
                     />
                     <InfoItem
                         textBtn="Quero Adotar!"
-                        urlBtn="#"
+                        urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+apadrinhar+um+aumigo%21"
                         colorBtn="bg-custom-red"
                         text="Adotar um animal inclui conhecer e escolher um pet em um abrigo, assinar um termo de responsabilidade e oferecer um lar amoroso."
                         title="Adotar"
@@ -62,7 +62,7 @@ export function Info() {
                 </div>
                 <Container>
                     <div className="absolute inset-0 flex items-center justify-center gap-0 w-full">
-                        <a href="#" className="lg:hidden">
+                        <a href="/dogs" className="lg:hidden">
                             <button className="flex flex-col items-center gap-3">
                                 <span className="uppercase text-2xl font-semibold text-center text-custom-yellow leading-7 px-4 sm:text-4xl sm:left-5>">Conheça <span className="block">nossos</span><span className="block">aumigos</span></span>
                                 <Image src={Arrow} alt="Seta" className="h-12 sm:h-20" />
@@ -71,7 +71,7 @@ export function Info() {
                         <div className="hidden lg:block w-[300px]">
                             <InfoItem
                                 textBtn="Quero apadrinhar!"
-                                urlBtn="#"
+                                urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+adotar+um+aumigo%21"
                                 colorBtn="bg-custom-cyan"
                                 text="Apadrinhar um animal envolve contribuições financeiras para cuidados essenciais ou doar tempo e afeto por meio de visitas."
                                 title="Apadrinhar"
@@ -83,14 +83,14 @@ export function Info() {
                         <div className="hidden lg:block w-[300px]">
                             <InfoItem
                                 textBtn="Quero Adotar!"
-                                urlBtn="#"
+                                urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+apadrinhar+um+aumigo%21"
                                 colorBtn="bg-custom-red"
                                 text="Adotar um animal inclui conhecer e escolher um pet em um abrigo, assinar um termo de responsabilidade e oferecer um lar amoroso."
                                 title="Adotar"
                             />
                         </div>
                     </div>
-                    <a href="#" className="hidden lg:block bottom-28 absolute right-10 xl:bottom-44 xl:right-20">
+                    <a href="/dogs" className="hidden lg:block bottom-28 absolute right-10 xl:bottom-44 xl:right-20">
                         <button className="flex items-center">
                             <span className="uppercase text-2xl font-semibold text-right text-custom-yellow leading-6 px-4 xl:text-3xl">Conheça nossos<span className="block">aumigos</span></span>
                             <Image src={Arrow} alt="Seta" className="h-16 -ml-3" />
