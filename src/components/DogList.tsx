@@ -201,7 +201,7 @@ export function DogList() {
             </div>
           </div>
           {/* grid com os cards */}
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4">
             {pets.map((pet) => (
               <div
                 className="bg-white rounded-3xl overflow-hidden pb-5"
