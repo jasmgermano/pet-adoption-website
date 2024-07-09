@@ -31,10 +31,23 @@ export function DogList() {
   useEffect(() => {
     async function fetchPets() {
       try {
+        let gen = "";
+        let size = "";
+
+        if (type.length > 0) {
+          gen = type === "F" ? "Fêmea" : "Macho";
+        }
+
+        if (weight.length > 0) {
+          size =
+            weight === "P" ? "Pequeno" : weight === "M" ? "Médio" : "Grande";
+        }
+
         const response = await fetch(
-          `/api/pet?type=${type}&age=${age}&weight=${weight}`
+          `/api/pet?type=${gen}&age=${age}&weight=${size}`
         );
         const data = await response.json();
+
         setPets(data.body);
       } catch (error) {
         console.error(error);
@@ -92,7 +105,7 @@ export function DogList() {
               isOpen ? "block" : "hidden"
             }`}
           >
-            <form action="" className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center gap-2">
               <div className="flex flex-col w-full">
                 <label htmlFor="dog" className="text-white">
                   Gênero
@@ -112,17 +125,13 @@ export function DogList() {
                 <label htmlFor="dog" className="text-white">
                   Idade
                 </label>
-                <select
-                  name="dog"
-                  id="dog"
+                <input
+                  type="number"
                   className="bg-gray-200 rounded-full h-10 mt-2 pl-2"
-                >
-                  <option value=" ">Selecione</option>
-                  <option value="1">1-3 anos</option>
-                  <option value="2">4-6 anos</option>
-                  <option value="3">7-10 anos</option>
-                  <option value="4">10+ anos</option>
-                </select>
+                  placeholder="idade"
+                  min={1}
+                  onChange={(e) => setAge(e.target.value)}
+                />
               </div>
               <div className="flex flex-col w-full">
                 <label htmlFor="dog" className="text-white">
@@ -140,13 +149,10 @@ export function DogList() {
                   <option value="G">Grande</option>
                 </select>
               </div>
-              <button className="bg-custom-red text-white rounded-full h-10 w-full mt-3 mb-7">
-                Buscar
-              </button>
-            </form>
+            </div>
           </div>
           <div className="hidden lg:flex flex-col items-center mb-5">
-            <form action="" className="flex items-end gap-2">
+            <div className="flex items-end gap-2">
               <div className="flex flex-col w-56">
                 <label htmlFor="dog" className="text-white">
                   Gênero
@@ -155,6 +161,7 @@ export function DogList() {
                   name="dog"
                   id="dog"
                   className="bg-gray-200 rounded-full h-10 mt-2 pl-2"
+                  onChange={(e) => setType(e.target.value)}
                 >
                   <option value="">Selecione</option>
                   <option value="F">Fêmea</option>
@@ -165,17 +172,13 @@ export function DogList() {
                 <label htmlFor="dog" className="text-white">
                   Idade
                 </label>
-                <select
-                  name="dog"
-                  id="dog"
+                <input
+                  type="number"
                   className="bg-gray-200 rounded-full h-10 mt-2 pl-2"
-                >
-                  <option value=" ">Selecione</option>
-                  <option value="1">1-3 anos</option>
-                  <option value="2">4-6 anos</option>
-                  <option value="3">7-10 anos</option>
-                  <option value="4">10+ anos</option>
-                </select>
+                  placeholder="idade"
+                  min={1}
+                  onChange={(e) => setAge(e.target.value)}
+                />
               </div>
               <div className="flex flex-col w-56">
                 <label htmlFor="dog" className="text-white">
@@ -185,6 +188,7 @@ export function DogList() {
                   name="dog"
                   id="dog"
                   className="bg-gray-200 rounded-full h-10 mt-2 pl-2"
+                  onChange={(e) => setWeight(e.target.value)}
                 >
                   <option value="">Selecione</option>
                   <option value="P">Pequeno</option>
@@ -192,10 +196,7 @@ export function DogList() {
                   <option value="G">Grande</option>
                 </select>
               </div>
-              <button className="bg-custom-red text-white rounded-full h-10 w-56">
-                Buscar
-              </button>
-            </form>
+            </div>
           </div>
           {/* grid com os cards */}
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4">

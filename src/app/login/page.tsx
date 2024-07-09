@@ -27,7 +27,6 @@ export default function Login() {
     });
 
     if (result?.error) {
-      console.log("result.error", result.error);
       setError("email", {
         type: "manual",
         message: "E-mail ou senha incorretos",

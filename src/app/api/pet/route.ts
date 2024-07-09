@@ -18,19 +18,19 @@ export async function GET(req: NextRequest) {
         created_at timestamp DEFAULT CURRENT_TIMESTAMP
         )`;
 
-  let query = sql`SELECT * FROM pets WHERE 1=1`; // Base query
+  let query = `SELECT * FROM pets WHERE 1=1`; // Base query
 
   if (type) {
-    query = sql`${String(query)} AND type = ${type}`;
+    query = `${String(query)} AND type = '${type}'`;
   }
   if (age) {
-    query = sql`${String(query)} AND age = ${age}`;
+    query = `${String(query)} AND age = ${age}`;
   }
   if (weight) {
-    query = sql`${String(query)} AND weight = ${weight}`;
+    query = `${String(query)} AND weight = '${weight}'`;
   }
 
-  const { rows } = await query;
+  const { rows } = await sql.query(query);
 
   return new Response(
     JSON.stringify({

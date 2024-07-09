@@ -231,6 +231,9 @@ export default function AdmList() {
                             width="16"
                             height="16"
                             viewBox="0 0 24 24"
+                            onClick={() => {
+                              window.location.href = `/admin/editar/${pet.id}`;
+                            }}
                           >
                             <path
                               fill="#787878"
