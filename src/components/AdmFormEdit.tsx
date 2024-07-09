@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Container } from "./Container";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
+import Image from "next/image";
 
 type BreedsAPIResponse = {
   message: {
@@ -18,24 +19,28 @@ type BreedOption = {
 };
 
 type PetData = {
+  id: string | null;
   name: string;
   age: number;
   description: string;
   breed: string;
   type: string;
   weight: number;
-  image: File;
+  image: File | FileList | string;
 };
 
 export default function AdmForm() {
   const router = useRouter();
+  const { id } = useParams();
 
   const [breeds, setBreeds] = useState<BreedOption[]>([]);
+  const [pet, setPet] = useState<PetData>({} as PetData);
 
   const {
     register,
     handleSubmit,
     setError,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<PetData>();
 
@@ -52,6 +57,37 @@ export default function AdmForm() {
       }
     }
 
+    async function fetchPet() {
+      try {
+        const response = await axios.get(`/api/pet/${id}`);
+        const data = response.data.body;
+
+        reset({
+          name: data.name,
+          age: data.age,
+          description: data.description,
+          breed: data.breed,
+          type: data.type,
+          weight: data.weight,
+          image: data.image,
+        });
+
+        setPet({
+          id: data.id,
+          name: data.name,
+          age: data.age,
+          description: data.description,
+          breed: data.breed,
+          type: data.type,
+          weight: data.weight,
+          image: data.image,
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchPet();
     fetchBreeds();
   }, []);
 
@@ -70,8 +106,12 @@ export default function AdmForm() {
       formData.append("image", data.image);
     }
 
+    if (formData.get("image") === null) {
+      formData.append("image", pet.image as string);
+    }
+
     try {
-      const response = await axios.post("/api/pet", formData, {
+      const response = await axios.put(`/api/pet/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -106,9 +146,7 @@ export default function AdmForm() {
     <div className="pt-24 mb-24">
       <Container>
         <div className="w-full flex flex-col items-center">
-          <h1 className="text-4xl font-bold text-center">
-            Cadastro de Animais
-          </h1>
+          <h1 className="text-4xl font-bold text-center">Edição de Animais</h1>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col mt-4"
@@ -145,10 +183,21 @@ export default function AdmForm() {
               ))}
             </select>
             <input
-              {...register("image", { required: true })}
+              {...register("image", { required: false })}
               type="file"
               className="h-12 border-2 border-gray-300 rounded-md p-2 mt-4"
             />
+
+            <div className="m-2">
+              <Image
+                src={pet.image as string}
+                alt="Dog 1"
+                width={200}
+                height={200}
+                className="rounded-md"
+              />
+            </div>
+
             <select
               {...register("type", { required: true })}
               className="h-12 border-2 border-gray-300 rounded-md p-2 mt-4"
@@ -192,7 +241,7 @@ export default function AdmForm() {
                   </path>
                 </svg>
               )}
-              Cadastrar
+              Salvar
             </button>
           </form>
         </div>
