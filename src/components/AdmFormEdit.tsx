@@ -165,12 +165,17 @@ export default function AdmForm() {
                 {...register("age", { required: true })}
               />
             </div>
-            <input
-              type="text"
+            <textarea
+              rows={4}
               placeholder="Descrição"
               className="h-12 border-2 border-gray-300 rounded-md p-2 mt-4"
-              {...register("description", { required: true })}
+              maxLength={255}
+              {...register("description", { required: true, maxLength: 255 })}
             />
+            <div className="text-red-500 text-sm mt-3">
+              {errors.description &&
+                "Descrição deve ter no máximo 255 caracteres"}
+            </div>
             <select
               {...register("breed", { required: true })}
               className="h-12 border-2 border-gray-300 rounded-md p-2 mt-4"
@@ -218,7 +223,7 @@ export default function AdmForm() {
             <button
               type="submit"
               className="h-12 bg-custom-red text-white rounded-md mt-4 flex items-center justify-center gap-2"
-              disabled={isSubmitting}
+              disabled={isSubmitting && !errors.description}
             >
               {isSubmitting && (
                 <svg

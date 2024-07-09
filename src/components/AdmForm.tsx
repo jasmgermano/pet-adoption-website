@@ -127,11 +127,11 @@ export default function AdmForm() {
                 {...register("age", { required: true })}
               />
             </div>
-            <input
-              type="text"
+            <textarea
+              rows={4}
               placeholder="Descrição"
               className="h-12 border-2 border-gray-300 rounded-md p-2 mt-4"
-              {...register("description", { required: true })}
+              {...register("description", { required: true, maxLength: 255 })}
             />
             <select
               {...register("breed", { required: true })}
