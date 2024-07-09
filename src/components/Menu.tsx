@@ -1,6 +1,6 @@
 'use client';
 import { useState } from "react";
-import { Container } from "./Container"
+import { Container } from "./Container";
 
 type MenuItemProps = {
     title: string,
@@ -10,7 +10,7 @@ type MenuItemProps = {
 function MenuItem({ title, url }: MenuItemProps) {
     return (
         <li className="block cursor-pointer py-1.5 px-4 hover:text-custom-cyan lg:flex lg:items-center">
-            <a className="block text-xl font-medium text-nowrap lg:font-semibold w-full" href={url}>{title}</a>
+            <a className="block text-xl font-medium text-nowrap lg:font-semibold w-full text-center" href={url}>{title}</a>
         </li>
     );
 }
@@ -21,13 +21,15 @@ export function Menu() {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     }    
-    
+
     return (
         <div className="w-full">
             <Container>
-                <nav className="w-full h-24 mt-5">
-                    <div className="flex justify-between items-center">
-                        <span><a className="inline-block mr-4 cursor-pointer text-2xl font-bold text-custom-cyan whitespace-nowrap" href="/">Adotar é legAU</a></span>
+                <nav className="w-full mt-5">
+                    <div className="flex justify-between items-center h-24">
+                        <span>
+                            <a className="inline-block mr-4 cursor-pointer text-2xl font-bold text-custom-cyan whitespace-nowrap" href="/">Adotar é legAU</a>
+                        </span>
                         <button onClick={toggleMenu} className="block lg:hidden">
                             <svg className="w-6 h-6 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 {isOpen ? (
@@ -37,7 +39,7 @@ export function Menu() {
                                 )}
                             </svg>
                         </button>
-                        <ul className="hidden lg:flex">
+                        <ul className="hidden lg:flex lg:justify-center lg:items-center w-full">
                             <MenuItem title={"Sobre"} url={"/#quemsomos"} />
                             <MenuItem title={"Objetivos"} url={"/#objetivos"} />
                             <MenuItem title={"Como adotar"} url={"/#comoadotar"} />
@@ -46,7 +48,7 @@ export function Menu() {
                             <MenuItem title={"Contato"} url={"/#contato"} />
                         </ul>
                     </div>
-                    <ul className={`flex flex-col items-center w-full  ${isOpen ? "block" : "hidden"}`}>
+                    <ul className={`transition-height duration-300 ease-in-out overflow-hidden lg:hidden ${isOpen ? "h-auto py-4" : "h-0"} flex flex-col items-center`}>
                         <MenuItem title={"Sobre"} url={"/#quemsomos"} />
                         <MenuItem title={"Objetivos"} url={"/#objetivos"} />
                         <MenuItem title={"Como adotar"} url={"/#comoadotar"} />
@@ -57,6 +59,5 @@ export function Menu() {
                 </nav>
             </Container>
         </div>
-        
-    )
+    );
 }

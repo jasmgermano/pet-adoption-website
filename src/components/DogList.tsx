@@ -104,9 +104,8 @@ export function DogList() {
             <span>Filtros</span>
           </button>
           <div
-            className={`flex flex-col justify-center ${
-              isOpen ? "block" : "hidden"
-            }`}
+            className={`flex flex-col justify-center ${isOpen ? "block" : "hidden"
+              }`}
           >
             <div className="flex flex-col items-center gap-2">
               <div className="flex flex-col w-full">
@@ -238,43 +237,58 @@ export function DogList() {
 
       {modalIsOpen && selectedPet && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-          <div className="w-1/2 bg-white rounded-3xl">
-            <div className="flex flex-row">
-              <div className="w-[400px] h-[430px] relative">
+          <div className="w-3/4 bg-white rounded-3xl p-3 lg:w-3/5">
+            <div className="flex justify-end p-2">
+              <button onClick={() => setModalIsOpen(false)} className="text-white bg-[#F8D432] p-2 rounded-full w-7 h-7 flex items-center justify-center">
+                <p>X</p>
+              </button>
+            </div>
+            <div className="flex flex-col items-center lg:flex-row lg:justify-center lg:gap-5">
+              <div className="w-[200px] h-[200px] relative lg:w-[500px] lg:h-[500px]">
                 <Image
                   src={selectedPet?.image}
                   alt="Dog 1"
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-3xl"
+                  className="rounded-full lg:rounded-3xl lg:-mt-6"
                 />
               </div>
-              <div className="flex-1 flex-col p-3">
-                <button
-                  onClick={() => setModalIsOpen(false)}
-                  className="absolute top-2 right-2 text-white bg-red-500 p-2 rounded-full"
-                >
-                  Fechar
-                </button>
-                <h2 className="text-xl font-semibold mt-3">
-                  {selectedPet?.name}
+              <div className="flex-1 flex-col p-3 text-center lg:text-left">
+                <h2 className="text-2xl font-semibold mt-3 lg:text-4xl">
+                  Olá, eu sou {selectedPet?.name}!
                 </h2>
-                <p>
-                  {selectedPet?.breed}, {selectedPet?.type}
-                </p>
-                <p>
-                  {selectedPet?.age} anos, {selectedPet?.weight}
-                </p>
+                <div className="flex justify-center gap-2 mt-3 lg:justify-start">
+                  <div className="bg-custom-cyan w-auto h-7 rounded-lg text-white flex items-center justify-center px-3">
+                    <p>{selectedPet?.age} anos</p>
+                  </div>
+                  <div className="bg-custom-cyan w-auto h-7 rounded-lg text-white flex items-center justify-center px-3">
+                    <p>{selectedPet?.weight}</p>
+                  </div>
+                  <div className="hidden bg-custom-cyan w-auto h-7 rounded-lg text-white items-center justify-center px-3 lg:flex">
+                    <p>{selectedPet?.breed}</p>
+                  </div>
+                  <div className="hidden bg-custom-cyan w-auto h-7 rounded-lg text-white items-center justify-center px-3 lg:flex">
+                    <p>{selectedPet?.type}</p>
+                  </div>
+                </div>
+                <div className="flex justify-center gap-2 mt-3 lg:hidden">
+                  <div className="bg-custom-cyan w-auto h-7 rounded-lg text-white flex items-center justify-center px-3">
+                    <p>{selectedPet?.breed}</p>
+                  </div>
+                  <div className="bg-custom-cyan w-auto h-7 rounded-lg text-white flex items-center justify-center px-3">
+                    <p>{selectedPet?.type}</p>
+                  </div>
+                </div>
                 <p className="mt-3">{selectedPet?.description}</p>
                 <a
-                  href={`https://wa.me/5519988359366?text=Tenho%20interesse%20em%20adotar%20a(o)%20${selectedPet?.name}`.replace(
+                  href={`https://wa.me/553584137314?text=Tenho%20interesse%20em%20adotar%20a(o)%20${selectedPet?.name}`.replace(
                     " ",
                     "%20"
                   )}
-                  className="flex gap-2 items-center bg-green-500 text-white p-3 rounded-2xl mt-3"
+                  className="flex gap-2 items-center bg-custom-light-cyan text-custom-blue p-3 rounded-full mt-3 font-semibold justify-center lg:w-60"
                 >
                   <svg
-                    fill="#ffffff"
+                    fill="#0A63B6"
                     height="16px"
                     width="16px"
                     version="1.1"
@@ -308,7 +322,7 @@ export function DogList() {
                       />
                     </g>
                   </svg>
-                  Adote {selectedPet?.name}
+                  Quero adotar {selectedPet?.name}!
                 </a>
               </div>
             </div>
