@@ -8,7 +8,7 @@ export function AdmMenu() {
         <nav className="h-24 w-full flex justify-between items-center">
           <a
             className="inline-block cursor-pointer text-xl font-bold text-custom-red whitespace-nowrap"
-            href="/"
+            href="/admin"
           >
             Adotar é legAU
           </a>

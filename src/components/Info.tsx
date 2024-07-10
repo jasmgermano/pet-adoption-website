@@ -62,7 +62,7 @@ export function Info() {
                 </div>
                 <Container>
                     <div className="absolute inset-0 flex items-center justify-center gap-0 w-full">
-                        <a href="/dogs" className="lg:hidden">
+                        <a href="/cachorros" className="lg:hidden">
                             <button className="flex flex-col items-center gap-3">
                                 <span className="uppercase text-2xl font-semibold text-center text-custom-yellow leading-7 px-4 sm:text-4xl sm:left-5>">Conheça <span className="block">nossos</span><span className="block">aumigos</span></span>
                                 <Image src={Arrow} alt="Seta" className="h-12 sm:h-20" />
@@ -90,7 +90,7 @@ export function Info() {
                             />
                         </div>
                     </div>
-                    <a href="/dogs" className="hidden lg:block bottom-28 absolute right-10 xl:bottom-44 xl:right-20">
+                    <a href="/cachorros" className="hidden lg:block bottom-28 absolute right-10 xl:bottom-44 xl:right-20">
                         <button className="flex items-center">
                             <span className="uppercase text-2xl font-semibold text-right text-custom-yellow leading-6 px-4 xl:text-3xl">Conheça nossos<span className="block">aumigos</span></span>
                             <Image src={Arrow} alt="Seta" className="h-16 -ml-3" />

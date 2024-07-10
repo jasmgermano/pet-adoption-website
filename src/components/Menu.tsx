@@ -43,7 +43,7 @@ export function Menu() {
                             <MenuItem title={"Sobre"} url={"/#quemsomos"} />
                             <MenuItem title={"Objetivos"} url={"/#objetivos"} />
                             <MenuItem title={"Como adotar"} url={"/#comoadotar"} />
-                            <MenuItem title={"Cães"} url={"/dogs"} />
+                            <MenuItem title={"Cães"} url={"/cachorros"} />
                             <MenuItem title={"Visite"} url={"/#visite"} />
                             <MenuItem title={"Contato"} url={"/#contato"} />
                         </ul>
@@ -52,7 +52,7 @@ export function Menu() {
                         <MenuItem title={"Sobre"} url={"/#quemsomos"} />
                         <MenuItem title={"Objetivos"} url={"/#objetivos"} />
                         <MenuItem title={"Como adotar"} url={"/#comoadotar"} />
-                        <MenuItem title={"Cães"} url={"/dogs"} />
+                        <MenuItem title={"Cães"} url={"/cachorros"} />
                         <MenuItem title={"Visite"} url={"/#visite"} />
                         <MenuItem title={"Contato"} url={"/#contato"} />
                     </ul>

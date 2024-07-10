@@ -21,19 +21,19 @@ type BreedOption = {
 type PetData = {
   id: string | null;
   name: string;
-  age: number;
+  age: string;
   description: string;
   breed: string;
   type: string;
   weight: number;
   image: File | FileList | string;
+  unit: string;
 };
 
 export default function AdmForm() {
   const router = useRouter();
   const { id } = useParams();
 
-  const [breeds, setBreeds] = useState<BreedOption[]>([]);
   const [pet, setPet] = useState<PetData>({} as PetData);
 
   const {
@@ -45,42 +45,34 @@ export default function AdmForm() {
   } = useForm<PetData>();
 
   useEffect(() => {
-    async function fetchBreeds() {
-      try {
-        const response = await axios.get<BreedsAPIResponse>(
-          "https://dog.ceo/api/breeds/list/all"
-        );
-        const breedList = parseBreeds(response.data);
-        setBreeds(breedList);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
     async function fetchPet() {
       try {
         const response = await axios.get(`/api/pet/${id}`);
         const data = response.data.body;
 
+        const [age, unit] = data.age.split(" ");
+
         reset({
           name: data.name,
-          age: data.age,
+          age: age,
           description: data.description,
           breed: data.breed,
           type: data.type,
           weight: data.weight,
           image: data.image,
+          unit: unit,
         });
 
         setPet({
           id: data.id,
           name: data.name,
-          age: data.age,
+          age: age,
           description: data.description,
           breed: data.breed,
           type: data.type,
           weight: data.weight,
           image: data.image,
+          unit: unit,
         });
       } catch (error) {
         console.error(error);
@@ -88,13 +80,13 @@ export default function AdmForm() {
     }
 
     fetchPet();
-    fetchBreeds();
   }, []);
 
   async function onSubmit(data: PetData) {
+    const ageWithUnit = `${data.age} ${data.unit}`;
     const formData = new FormData();
     formData.append("name", data.name);
-    formData.append("age", data.age.toString());
+    formData.append("age", ageWithUnit);
     formData.append("description", data.description);
     formData.append("breed", data.breed);
     formData.append("type", data.type);
@@ -125,23 +117,6 @@ export default function AdmForm() {
     }
   }
 
-  function parseBreeds(data: BreedsAPIResponse): BreedOption[] {
-    let breedList: BreedOption[] = [];
-    for (const breed in data.message) {
-      if (data.message[breed].length === 0) {
-        breedList.push({ id: breed, name: breed });
-      } else {
-        data.message[breed].forEach((subBreed) => {
-          breedList.push({
-            id: `${breed}/${subBreed}`,
-            name: `${subBreed} ${breed}`,
-          });
-        });
-      }
-    }
-    return breedList;
-  }
-
   return (
     <div className="pt-24 mb-24">
       <Container>
@@ -161,9 +136,16 @@ export default function AdmForm() {
               <input
                 type="number"
                 placeholder="Idade"
-                className="h-12 w-1/3 border-2 border-gray-300 rounded-md p-2"
+                className="h-12 w-1/2 border-2 border-gray-300 rounded-md p-2"
                 {...register("age", { required: true })}
               />
+              <select
+                {...register("unit", { required: true })}
+                className="h-12 w-1/2 border-2 border-gray-300 rounded-md p-2"
+              >
+                <option value="ano(s)">ano(s)</option>
+                <option value="mes(es)">mes(es)</option>
+              </select>
             </div>
             <textarea
               rows={4}
@@ -181,11 +163,28 @@ export default function AdmForm() {
               className="h-12 border-2 border-gray-300 rounded-md p-2 mt-4"
             >
               <option value="">Selecione uma raça</option>
-              {breeds.map((breed) => (
-                <option key={breed.id} value={breed.id}>
-                  {breed.name}
-                </option>
-              ))}
+              <option value="S/ raça definida">Sem raça definida</option>
+              <option value="Labrador">Labrador Retriever</option>
+              <option value="Pastor Alemão">Pastor Alemão</option>
+              <option value="Golden Retriever">Golden Retriever</option>
+              <option value="Bulldog">Bulldog</option>
+              <option value="Beagle">Beagle</option>
+              <option value="Poodle">Poodle</option>
+              <option value="Rottweiler">Rottweiler</option>
+              <option value="Yorkshire">Yorkshire Terrier</option>
+              <option value="Boxer">Boxer</option>
+              <option value="Dachshund">Dachshund</option>
+              <option value="ShihTzu">Shih Tzu</option>
+              <option value="Doberman">Doberman</option>
+              <option value="Dogue Alemão">Dogue Alemão</option>
+              <option value="Husky Siberiano">Husky Siberiano</option>
+              <option value="Chihuahua">Chihuahua</option>
+              <option value="Pug">Pug</option>
+              <option value="Border Collie">Border Collie</option>
+              <option value="Akita">Akita</option>
+              <option value="Maltes">Maltês</option>
+              <option value="BassetHound">Basset Hound</option>
+              <option value="Outra">Outra</option>
             </select>
             <input
               {...register("image", { required: false })}

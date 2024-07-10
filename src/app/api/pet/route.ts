@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
   await sql`CREATE TABLE IF NOT EXISTS pets (
         id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
         name varchar(255) NOT NULL,
-        age integer NOT NULL,
+        age varchar(255) NOT NULL,
         description varchar(255) NOT NULL,
         breed varchar(255) NOT NULL,
         type varchar(255) NOT NULL,
@@ -72,7 +72,7 @@ export async function POST(request: Request) {
   await sql`CREATE TABLE IF NOT EXISTS pets (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     name varchar(255) NOT NULL,
-    age integer NOT NULL,
+    age varchar(255) NOT NULL,
     description varchar(255) NOT NULL,
     breed varchar(255) NOT NULL,
     type varchar(255) NOT NULL,
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
 
   await sql`INSERT INTO pets (name, age, description, breed, type, weight, image) VALUES (${String(
     name
-  )}, ${Number(age)}, ${String(description)}, ${String(breed)}, ${String(
+  )}, ${String(age)}, ${String(description)}, ${String(breed)}, ${String(
     type
   )}, ${String(weight)}, ${String(imageUrl)})`;
 

@@ -62,7 +62,7 @@ export async function PUT(
      pets
    SET
      name = ${String(name)},
-     age = ${Number(age)},
+     age = ${String(age)},
      description = ${String(description)},
      breed = ${String(breed)},
      type = ${String(type)},

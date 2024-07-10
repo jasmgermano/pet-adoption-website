@@ -227,7 +227,7 @@ export function DogList() {
                   {pet.breed}, {pet.type}
                 </p>
                 <p className="text-center">
-                  {pet.age} anos, {pet.weight}
+                  {pet.age}, {pet.weight}
                 </p>
               </div>
             ))}
@@ -237,7 +237,7 @@ export function DogList() {
 
       {modalIsOpen && selectedPet && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-          <div className="w-3/4 bg-white rounded-3xl p-3 lg:w-3/5">
+          <div className="w-3/4 bg-white rounded-3xl p-3 lg:w-[70%]">
             <div className="flex justify-end p-2">
               <button onClick={() => setModalIsOpen(false)} className="text-white bg-[#F8D432] p-2 rounded-full w-7 h-7 flex items-center justify-center">
                 <p>X</p>
@@ -258,16 +258,16 @@ export function DogList() {
                   Olá, eu sou {selectedPet?.name}!
                 </h2>
                 <div className="flex justify-center gap-2 mt-3 lg:justify-start">
-                  <div className="bg-custom-cyan w-auto h-7 rounded-lg text-white flex items-center justify-center px-3">
-                    <p>{selectedPet?.age} anos</p>
+                  <div className="bg-custom-cyan w-auto h-7 rounded-lg text-white flex items-center justify-center px-3 lg:text-nowrap">
+                    <p>{selectedPet?.age}</p>
                   </div>
-                  <div className="bg-custom-cyan w-auto h-7 rounded-lg text-white flex items-center justify-center px-3">
+                  <div className="bg-custom-cyan w-auto h-7 rounded-lg text-white flex items-center justify-center px-3 lg:text-nowrap">
                     <p>{selectedPet?.weight}</p>
                   </div>
-                  <div className="hidden bg-custom-cyan w-auto h-7 rounded-lg text-white items-center justify-center px-3 lg:flex">
+                  <div className="hidden bg-custom-cyan w-auto h-7 rounded-lg text-white items-center justify-center px-3 lg:flex lg:text-nowrap">
                     <p>{selectedPet?.breed}</p>
                   </div>
-                  <div className="hidden bg-custom-cyan w-auto h-7 rounded-lg text-white items-center justify-center px-3 lg:flex">
+                  <div className="hidden bg-custom-cyan w-auto h-7 rounded-lg text-white items-center justify-center px-3 lg:flex lg:text-nowrap">
                     <p>{selectedPet?.type}</p>
                   </div>
                 </div>
