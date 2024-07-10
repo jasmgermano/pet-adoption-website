@@ -16,10 +16,11 @@ export type FormProps = {
 }
 
 export const Contact: FC = () => {
-    const { register, handleSubmit } = useForm<FormProps>();
+    const { register, handleSubmit, reset } = useForm<FormProps>();
 
     function onSubmit(data: FormProps) {
-        sendEmail(data)
+        sendEmail(data);
+        reset();
     }
 
     return (
