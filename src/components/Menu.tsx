@@ -9,7 +9,7 @@ type MenuItemProps = {
 
 function MenuItem({ title, url }: MenuItemProps) {
     return (
-        <li className="block cursor-pointer py-1.5 px-4 hover:text-custom-cyan lg:flex lg:items-center">
+        <li className="block cursor-pointer py-1.5 px-4 hover:text-custom-cyan lg:h-full">
             <a className="block text-xl font-medium text-nowrap lg:font-semibold w-full text-center" href={url}>{title}</a>
         </li>
     );
@@ -25,8 +25,8 @@ export function Menu() {
     return (
         <div className="w-full">
             <Container>
-                <nav className="w-full mt-5">
-                    <div className="flex justify-between items-center h-24">
+                <nav className="w-full mt-5 lg:mt-10">
+                    <div className="flex justify-between items-center h-24 lg:items-start">
                         <span>
                             <a className="inline-block mr-4 cursor-pointer text-2xl font-bold text-custom-cyan whitespace-nowrap" href="/">Adotar é legAU</a>
                         </span>
@@ -39,7 +39,7 @@ export function Menu() {
                                 )}
                             </svg>
                         </button>
-                        <ul className="hidden lg:flex lg:justify-center lg:items-center w-full">
+                        <ul className="hidden lg:flex justify-end w-full">
                             <MenuItem title={"Sobre"} url={"/#quemsomos"} />
                             <MenuItem title={"Objetivos"} url={"/#objetivos"} />
                             <MenuItem title={"Como adotar"} url={"/#comoadotar"} />
