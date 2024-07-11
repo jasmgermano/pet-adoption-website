@@ -156,9 +156,6 @@ export default function Login() {
             )}
             Entrar
           </button>
-          <a href="/" className="text-custom-cyan mt-5">
-            Esqueceu sua senha?
-          </a>
         </form>
       </div>
     </div>
