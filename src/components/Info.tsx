@@ -37,7 +37,7 @@ export function Info() {
                 <div className="flex flex-col items-center lg:hidden">
                     <InfoItem
                         textBtn="Quero apadrinhar!"
-                        urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+adotar+um+aumigo%21"
+                        urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+apadrinhar+um+aumigo%21"
                         colorBtn="bg-custom-cyan"
                         text="Apadrinhar um animal envolve contribuições financeiras para cuidados essenciais ou doar tempo e afeto por meio de visitas."
                         title="Apadrinhar"
@@ -45,7 +45,7 @@ export function Info() {
                     />
                     <InfoItem
                         textBtn="Quero Adotar!"
-                        urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+apadrinhar+um+aumigo%21"
+                        urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+adotar+um+aumigo%21"
                         colorBtn="bg-custom-red"
                         text="Adotar um animal inclui conhecer e escolher um pet em um abrigo, assinar um termo de responsabilidade e oferecer um lar amoroso."
                         title="Adotar"
@@ -71,7 +71,7 @@ export function Info() {
                         <div className="hidden lg:block w-[300px]">
                             <InfoItem
                                 textBtn="Quero apadrinhar!"
-                                urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+adotar+um+aumigo%21"
+                                urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+apadrinhar+um+aumigo%21"
                                 colorBtn="bg-custom-cyan"
                                 text="Apadrinhar um animal envolve contribuições financeiras para cuidados essenciais ou doar tempo e afeto por meio de visitas."
                                 title="Apadrinhar"
@@ -83,7 +83,7 @@ export function Info() {
                         <div className="hidden lg:block w-[300px]">
                             <InfoItem
                                 textBtn="Quero Adotar!"
-                                urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+apadrinhar+um+aumigo%21"
+                                urlBtn="https://wa.me/553584137314/?text=Ol%C3%A1%2C+tenho+interesse+em+adotar+um+aumigo%21"
                                 colorBtn="bg-custom-red"
                                 text="Adotar um animal inclui conhecer e escolher um pet em um abrigo, assinar um termo de responsabilidade e oferecer um lar amoroso."
                                 title="Adotar"
