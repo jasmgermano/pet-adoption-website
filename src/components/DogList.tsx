@@ -8,7 +8,7 @@ import { Container } from "./Container";
 type PetData = {
   id: string;
   name: string;
-  age: number;
+  age: string;
   description: string;
   breed: string;
   type: string;
@@ -128,10 +128,9 @@ export function DogList() {
                   Idade
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   className="bg-gray-200 rounded-full h-10 mt-2 pl-2"
                   placeholder="idade"
-                  min={1}
                   onChange={(e) => setAge(e.target.value)}
                 />
               </div>
@@ -175,10 +174,9 @@ export function DogList() {
                   Idade
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   className="bg-gray-200 rounded-full h-10 mt-2 pl-2"
                   placeholder="idade"
-                  min={1}
                   onChange={(e) => setAge(e.target.value)}
                 />
               </div>

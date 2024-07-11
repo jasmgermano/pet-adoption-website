@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
     query = `${String(query)} AND type = '${type}'`;
   }
   if (age) {
-    query = `${String(query)} AND age = ${age}`;
+    query = `${String(query)} AND age LIKE '%${age}%'`;
   }
   if (weight) {
     query = `${String(query)} AND weight = '${weight}'`;
